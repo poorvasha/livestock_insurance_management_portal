@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lsi_management_portal/configs/Resources.dart';
 import 'package:lsi_management_portal/screens/HomeScreen.dart';
 import 'package:lsi_management_portal/screens/LoginScreen.dart';
+import 'package:lsi_management_portal/screens/MasterDataEntryScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'configs/Routes.dart';
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
         return const HomeScreen();
       case 'FlashScreen':
         return const FlashScreen();
+      case 'MasterDataEntryScreen':
+        return const MasterDataEntryScreen();
       default:
         return const LoginScreen();
     }

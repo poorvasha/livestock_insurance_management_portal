@@ -59,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
     if (userNameInputData.isValid && passwordInputData.isValid) {
       context.read<AppModel>().setInitialRoute = "HomeScreen";
     } else {
-      userNameInputData.showErrMessage = true;
-      passwordInputData.showErrMessage = true;
+      userNameInputData.showErrMessage = !userNameInputData.isValid;
+      passwordInputData.showErrMessage = !passwordInputData.isValid;
     }
     setState(() {
       userNameInputData;

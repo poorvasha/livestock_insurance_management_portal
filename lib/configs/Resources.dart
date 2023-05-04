@@ -9,10 +9,18 @@ class Resources {
 
   static List<BoxShadow> customShadow = [
     BoxShadow(
-        color: primaryColor.withOpacity(0.2),
+        color: primaryColor.withOpacity(0.1),
         spreadRadius: 0,
-        offset: const Offset(-4, -4),
-        blurRadius: 8,
+        offset: const Offset(1, 1),
+        blurRadius: 4,
+        blurStyle: BlurStyle.outer)
+  ];
+  static List<BoxShadow> inputShadow = [
+    BoxShadow(
+        color: primaryColor.withOpacity(0.1),
+        spreadRadius: 0,
+        offset: const Offset(1, 1),
+        blurRadius: 4,
         blurStyle: BlurStyle.outer)
   ];
 }

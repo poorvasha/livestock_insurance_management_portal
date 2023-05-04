@@ -34,7 +34,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             obscureText: widget.inputData.obscureText,
             inputFormatters: [widget.inputData.textInputType],
             cursorColor: Resources.primaryColor,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 focusColor: Resources.primaryColor,
                 focusedBorder: UnderlineInputBorder(
                     borderSide:

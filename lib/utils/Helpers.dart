@@ -55,3 +55,5 @@ class Helpers {
     }
   }
 }
+
+enum ScreenType { homeScreen, masterDataEntryScreen }

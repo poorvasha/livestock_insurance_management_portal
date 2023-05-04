@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lsi_management_portal/configs/Resources.dart';
 import 'package:lsi_management_portal/screens/HomeScreen.dart';
 import 'package:lsi_management_portal/screens/LoginScreen.dart';
+import 'package:lsi_management_portal/screens/MasterDataEntryScreen.dart';
+import 'package:lsi_management_portal/services/app_helper.dart';
 import 'package:provider/provider.dart';
 
 import 'configs/Routes.dart';
@@ -23,8 +25,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Insurance App Admin',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          elevatedButtonTheme: const ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll(Resources.primaryColor))
+              //  <-- this auto selects the right color
+              )),
       onGenerateRoute: Routes.RouteController,
       home: displayHome(context),
     );
@@ -39,6 +46,8 @@ class MyApp extends StatelessWidget {
         return const HomeScreen();
       case 'FlashScreen':
         return const FlashScreen();
+      case 'MasterDataEntryScreen':
+        return const MasterDataEntryScreen();
       default:
         return const LoginScreen();
     }
@@ -56,10 +65,16 @@ class _FlashScreenState extends State<FlashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 0), () {
-      // TODO : Check if user is login or not and navigate according it
-      context.read<AppModel>().setInitialRoute = "LoginScreen";
-    });
+    checkLoginState();
+  }
+
+  checkLoginState() async {
+    bool isLoggedIn = await AppHelper.checkIsUserLoggedIn();
+    if (isLoggedIn) {
+      context.read<AppModel>().setInitialRoute = Routes.homeScreen;
+      return;
+    }
+    context.read<AppModel>().setInitialRoute = Routes.loginScreen;
   }
 
   @override

@@ -7,7 +7,11 @@ import 'package:lsi_management_portal/utils/Helpers.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/AppModel.dart';
+import '../services/app_helper.dart';
+import '../services/auth_service.dart';
+import '../utils/app_exception.dart';
 import '../widgets/TextFieldWidget.dart';
+import '../utils/extensions.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
   late InputFieldData passwordInputData;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     userNameInputData = InputFieldData(
         labelName: "User Name",
@@ -55,17 +58,28 @@ class _LoginScreenState extends State<LoginScreen> {
     passwordInputData.myController = TextEditingController(text: value);
   }
 
-  onLogin() {
-    if (userNameInputData.isValid && passwordInputData.isValid) {
-      context.read<AppModel>().setInitialRoute = "HomeScreen";
-    } else {
-      userNameInputData.showErrMessage = true;
-      passwordInputData.showErrMessage = true;
+  onLogin() async {
+    if (!userNameInputData.isValid || !passwordInputData.isValid) {
+      userNameInputData.showErrMessage = !userNameInputData.isValid;
+      passwordInputData.showErrMessage = !passwordInputData.isValid;
+      return;
     }
-    setState(() {
-      userNameInputData;
-      passwordInputData;
-    });
+
+    try {
+      dynamic response = await AuthService.loginModerator(
+          userNameInputData.myController.text,
+          passwordInputData.myController.text);
+      AppHelper.setAccessToken(response['token']);
+      context.read<AppModel>().setInitialRoute = "HomeScreen";
+    } on BadRequestException catch (e) {
+      AppHelper.showSnackbar(
+          e.message?.capitalize() ??
+              "Something went wrong, please try again later",
+          context);
+    } catch (e) {
+      AppHelper.showSnackbar(
+          "Something went wrong, please try again later", context);
+    }
   }
 
   @override
@@ -97,8 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(children: [
                     SvgPicture.asset(
                       "../assets/images/secure_login.svg",
-                      height: 300,
-                      width: 300,
+                      height: 200,
+                      width: 200,
                     ),
                     const SizedBox(
                       width: 80,
@@ -118,10 +132,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                   ]),
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: IconButton(
-                      iconSize: 60,
+                      iconSize: 30,
                       onPressed: onLogin,
                       icon: const Icon(
                         Icons.arrow_forward_outlined,

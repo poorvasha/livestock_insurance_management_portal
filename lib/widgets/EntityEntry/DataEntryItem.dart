@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:lsi_management_portal/widgets/EntityEntry/ClusterEntryItem.dart';
@@ -19,8 +20,7 @@ class DataEntryItem extends StatefulWidget {
 }
 
 class _DataEntryItemState extends State<DataEntryItem> {
-  @override
-  Widget build(BuildContext context) {
+  _buildDataEntryItem() {
     if (widget.entity == "state") {
       return StateEntryItem();
     }
@@ -52,7 +52,15 @@ class _DataEntryItemState extends State<DataEntryItem> {
     if (widget.entity == "livestock") {
       return LivestockEntryItem();
     }
+  }
 
-    return const Placeholder();
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: _buildDataEntryItem(),
+      ),
+    );
   }
 }

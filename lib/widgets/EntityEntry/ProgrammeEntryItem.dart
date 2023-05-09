@@ -7,6 +7,7 @@ import 'package:lsi_management_portal/services/app_helper.dart';
 import 'package:lsi_management_portal/services/master_data_service.dart';
 
 import '../../models/InputFieldModel.dart';
+import '../DropdownWidget.dart';
 import '../TextFieldWidget.dart';
 
 class ProgrammeEntryItem extends StatefulWidget {
@@ -103,7 +104,7 @@ class _ProgrammeEntryItemState extends State<ProgrammeEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedState == null ? null : selectedState?.sId,
               hint: Text("State"),
               items: states.map((States value) {

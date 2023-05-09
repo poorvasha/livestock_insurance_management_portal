@@ -12,6 +12,7 @@ import '../../models/data/region_model.dart';
 import '../../models/data/state_model.dart';
 import '../../services/app_helper.dart';
 import '../../services/master_data_service.dart';
+import '../DropdownWidget.dart';
 import '../TextFieldWidget.dart';
 
 class GroupEntryItem extends StatefulWidget {
@@ -137,7 +138,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedState == null ? null : selectedState?.sId,
               hint: Text("State"),
               items: states.map((States value) {
@@ -164,7 +165,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedProgramme == null ? null : selectedProgramme?.sId,
               hint: Text("Programme"),
               items: programs
@@ -193,7 +194,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedRegion == null ? null : selectedRegion?.sId,
               hint: Text("Region"),
               items: regions
@@ -222,7 +223,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedLocation == null ? null : selectedLocation?.sId,
               hint: Text("Locations"),
               items: locations
@@ -249,7 +250,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedCluster == null ? null : selectedCluster?.sId,
               hint: Text("Clusters"),
               items: clusters

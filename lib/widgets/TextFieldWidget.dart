@@ -36,6 +36,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             inputFormatters: [widget.inputData.textInputType],
             cursorColor: Resources.primaryColor,
             decoration: const InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 0.0),
                 focusColor: Resources.primaryColor,
                 focusedBorder: UnderlineInputBorder(
                     borderSide:

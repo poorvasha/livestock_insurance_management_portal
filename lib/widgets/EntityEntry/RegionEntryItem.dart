@@ -8,6 +8,7 @@ import '../../models/InputFieldModel.dart';
 import '../../models/data/state_model.dart';
 import '../../services/app_helper.dart';
 import '../../services/master_data_service.dart';
+import '../DropdownWidget.dart';
 import '../TextFieldWidget.dart';
 import '../../utils/extensions.dart';
 
@@ -108,7 +109,7 @@ class _RegionEntryItemState extends State<RegionEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedState == null ? null : selectedState?.sId,
               hint: Text("State"),
               items: states.map((States value) {
@@ -132,7 +133,7 @@ class _RegionEntryItemState extends State<RegionEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedProgramme == null ? null : selectedProgramme?.sId,
               hint: Text("Programme"),
               items: programs

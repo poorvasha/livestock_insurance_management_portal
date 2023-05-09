@@ -11,6 +11,7 @@ import '../../models/data/state_model.dart';
 import '../../models/data/location_model.dart';
 import '../../services/app_helper.dart';
 import '../../services/master_data_service.dart';
+import '../DropdownWidget.dart';
 import '../TextFieldWidget.dart';
 
 class ClusterEntryItem extends StatefulWidget {
@@ -126,7 +127,7 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedState == null ? null : selectedState?.sId,
               hint: Text("State"),
               items: states.map((States value) {
@@ -152,7 +153,7 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedProgramme == null ? null : selectedProgramme?.sId,
               hint: Text("Programme"),
               items: programs
@@ -180,7 +181,7 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedRegion == null ? null : selectedRegion?.sId,
               hint: Text("region"),
               items: regions
@@ -208,7 +209,7 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
           ),
           SizedBox(
             width: 400,
-            child: DropdownButton<String>(
+            child: DropDown(
               value: selectedLocation == null ? null : selectedLocation?.sId,
               hint: Text("Locations"),
               items: locations

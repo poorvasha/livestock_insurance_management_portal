@@ -185,6 +185,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
     }
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(

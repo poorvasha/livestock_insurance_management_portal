@@ -121,6 +121,7 @@ class _LivestockEntryItemState extends State<LivestockEntryItem> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(

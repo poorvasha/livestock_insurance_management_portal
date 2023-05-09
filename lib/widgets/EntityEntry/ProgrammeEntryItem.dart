@@ -135,123 +135,122 @@ class _ProgrammeEntryItemState extends State<ProgrammeEntryItem> {
       });
     }
 
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                SizedBox(
-                    width: 400,
-                    child: TextFieldWidget(inputData: programmeNameInput)),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                    width: 400,
-                    child: TextFieldWidget(inputData: programmeCodeInput)),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              SizedBox(
                   width: 400,
-                  child: DropDown(
-                    value: selectedState == null ? null : selectedState?.sId,
-                    hint: Text("State"),
-                    items: states.map((States value) {
-                      return DropdownMenuItem<String>(
-                        value: value.sId,
-                        child: Text(value.name!),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      States selected =
-                          states.firstWhere((element) => element.sId == value);
-                      setState(() {
-                        selectedState = selected;
-                      });
-                    },
-                  ),
+                  child: TextFieldWidget(inputData: programmeNameInput)),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                  width: 400,
+                  child: TextFieldWidget(inputData: programmeCodeInput)),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: 400,
+                child: DropDown(
+                  value: selectedState == null ? null : selectedState?.sId,
+                  hint: Text("State"),
+                  items: states.map((States value) {
+                    return DropdownMenuItem<String>(
+                      value: value.sId,
+                      child: Text(value.name!),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    States selected =
+                        states.firstWhere((element) => element.sId == value);
+                    setState(() {
+                      selectedState = selected;
+                    });
+                  },
                 ),
-                const SizedBox(
-                  height: 32,
-                ),
-                SizedBox(
-                    width: 400,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: createProgramme,
-                      child: Text("Submit"),
-                    )),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              SizedBox(
+                  width: 400,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: createProgramme,
+                    child: Text("Submit"),
+                  )),
+            ],
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                  dividerThickness: 4,
-                  headingTextStyle:
-                      const TextStyle(color: Resources.white, fontSize: 14),
-                  dataRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Resources.primaryColor.withOpacity(0.1)),
-                  headingRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Resources.primaryColor),
-                  columnSpacing: 40,
-                  columns: const [
-                    DataColumn(label: Text("Name")),
-                    DataColumn(label: Text("Code")),
-                    DataColumn(label: Text("State")),
-                    DataColumn(label: Text("Actions"))
-                  ],
-                  rows: programs
-                      .map(
-                        (value) => DataRow(cells: [
-                          DataCell(
-                            Text(value.name!),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+                dividerThickness: 4,
+                headingTextStyle:
+                    const TextStyle(color: Resources.white, fontSize: 14),
+                dataRowColor: MaterialStateProperty.resolveWith(
+                    (states) => Resources.primaryColor.withOpacity(0.1)),
+                headingRowColor: MaterialStateProperty.resolveWith(
+                    (states) => Resources.primaryColor),
+                columnSpacing: 40,
+                columns: const [
+                  DataColumn(label: Text("Name")),
+                  DataColumn(label: Text("Code")),
+                  DataColumn(label: Text("State")),
+                  DataColumn(label: Text("Actions"))
+                ],
+                rows: programs
+                    .map(
+                      (value) => DataRow(cells: [
+                        DataCell(
+                          Text(value.name!),
+                        ),
+                        DataCell(
+                          Text(value.code!),
+                        ),
+                        DataCell(
+                          Text(states
+                              .firstWhere(
+                                (element) => element.sId == value.state!,
+                                orElse: () => States(name: ""),
+                              )
+                              .name!),
+                        ),
+                        DataCell(
+                          Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    onItemEdit(value);
+                                  },
+                                  icon: Icon(
+                                    Icons.edit,
+                                    size: 15,
+                                    color: Resources.gray,
+                                  )),
+                              IconButton(
+                                  onPressed: () {
+                                    onItemDelete(value);
+                                  },
+                                  icon: Icon(
+                                    Icons.delete,
+                                    size: 15,
+                                    color: Resources.gray,
+                                  ))
+                            ],
                           ),
-                          DataCell(
-                            Text(value.code!),
-                          ),
-                          DataCell(
-                            Text(states
-                                .firstWhere(
-                                  (element) => element.sId == value.state!,
-                                  orElse: () => States(name: ""),
-                                )
-                                .name!),
-                          ),
-                          DataCell(
-                            Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      onItemEdit(value);
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                      size: 15,
-                                      color: Resources.gray,
-                                    )),
-                                IconButton(
-                                    onPressed: () {
-                                      onItemDelete(value);
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      size: 15,
-                                      color: Resources.gray,
-                                    ))
-                              ],
-                            ),
-                          ),
-                        ]),
-                      )
-                      .toList()),
-            ),
+                        ),
+                      ]),
+                    )
+                    .toList()),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

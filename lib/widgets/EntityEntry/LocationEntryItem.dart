@@ -158,6 +158,7 @@ class _LocationEntryItemState extends State<LocationEntryItem> {
 
     return Container(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Column(

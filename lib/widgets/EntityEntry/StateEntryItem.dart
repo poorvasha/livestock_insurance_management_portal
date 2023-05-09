@@ -117,91 +117,90 @@ class _StateEntryItemState extends State<StateEntryItem> {
       });
     }
 
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                SizedBox(
-                    width: 400,
-                    child: TextFieldWidget(inputData: stateNameInput)),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                    width: 400,
-                    child: TextFieldWidget(inputData: stateCodeInput)),
-                const SizedBox(
-                  height: 32,
-                ),
-                SizedBox(
-                    width: 400,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: createState,
-                      child: Text("Submit"),
-                    )),
-              ],
-            ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              SizedBox(
+                  width: 400,
+                  child: TextFieldWidget(inputData: stateNameInput)),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                  width: 400,
+                  child: TextFieldWidget(inputData: stateCodeInput)),
+              const SizedBox(
+                height: 32,
+              ),
+              SizedBox(
+                  width: 400,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: createState,
+                    child: Text("Submit"),
+                  )),
+            ],
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                  dividerThickness: 4,
-                  headingTextStyle:
-                      const TextStyle(color: Resources.white, fontSize: 14),
-                  dataRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Resources.primaryColor.withOpacity(0.1)),
-                  headingRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Resources.primaryColor),
-                  columnSpacing: 40,
-                  columns: const [
-                    DataColumn(label: Text("Name")),
-                    DataColumn(label: Text("Code")),
-                    DataColumn(label: Text("Actions"))
-                  ],
-                  rows: states
-                      .map(
-                        (value) => DataRow(cells: [
-                          DataCell(
-                            Text(value.name!),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+                dividerThickness: 4,
+                headingTextStyle:
+                    const TextStyle(color: Resources.white, fontSize: 14),
+                dataRowColor: MaterialStateProperty.resolveWith(
+                    (states) => Resources.primaryColor.withOpacity(0.1)),
+                headingRowColor: MaterialStateProperty.resolveWith(
+                    (states) => Resources.primaryColor),
+                columnSpacing: 40,
+                columns: const [
+                  DataColumn(label: Text("Name")),
+                  DataColumn(label: Text("Code")),
+                  DataColumn(label: Text("Actions"))
+                ],
+                rows: states
+                    .map(
+                      (value) => DataRow(cells: [
+                        DataCell(
+                          Text(value.name!),
+                        ),
+                        DataCell(
+                          Text(value.code!),
+                        ),
+                        DataCell(
+                          Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    onItemEdit(value);
+                                  },
+                                  icon: Icon(
+                                    Icons.edit,
+                                    size: 15,
+                                    color: Resources.gray,
+                                  )),
+                              IconButton(
+                                  onPressed: () {
+                                    onItemDelete(value);
+                                  },
+                                  icon: Icon(
+                                    Icons.delete,
+                                    size: 15,
+                                    color: Resources.gray,
+                                  ))
+                            ],
                           ),
-                          DataCell(
-                            Text(value.code!),
-                          ),
-                          DataCell(
-                            Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      onItemEdit(value);
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                      size: 15,
-                                      color: Resources.gray,
-                                    )),
-                                IconButton(
-                                    onPressed: () {
-                                      onItemDelete(value);
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      size: 15,
-                                      color: Resources.gray,
-                                    ))
-                              ],
-                            ),
-                          ),
-                        ]),
-                      )
-                      .toList()),
-            ),
+                        ),
+                      ]),
+                    )
+                    .toList()),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

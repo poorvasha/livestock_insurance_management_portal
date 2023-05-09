@@ -56,10 +56,13 @@ class _DataEntryItemState extends State<DataEntryItem> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: _buildDataEntryItem(),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: _buildDataEntryItem(),
+        ),
       ),
     );
   }

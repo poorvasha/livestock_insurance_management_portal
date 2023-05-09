@@ -146,6 +146,7 @@ class _RegionEntryItemState extends State<RegionEntryItem> {
     }
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(

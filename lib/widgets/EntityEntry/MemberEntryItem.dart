@@ -196,6 +196,7 @@ class _MemberEntryItemState extends State<MemberEntryItem> {
     }
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(

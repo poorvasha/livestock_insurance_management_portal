@@ -170,6 +170,7 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
     }
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(

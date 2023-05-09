@@ -32,6 +32,8 @@ class ClientHelper {
       case 201:
         var responseJson = utf8.decode(response.bodyBytes);
         return json.decode(responseJson);
+      case 204:
+        return "";
       case 400:
         String result = utf8.decode(response.bodyBytes);
         Map<String, dynamic> decodedResult = json.decode(result);

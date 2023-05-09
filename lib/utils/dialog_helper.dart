@@ -55,4 +55,37 @@ class DialogHelper {
   void hideLoading(BuildContext context) {
     return Navigator.of(context).pop();
   }
+
+  void showDeleteConfirmation(BuildContext context, Function onConfirmed) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("Cancel"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget deleteButton = TextButton(
+      child: Text("Delete"),
+      onPressed: () {
+        onConfirmed();
+        Navigator.of(context).pop();
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Confirmation"),
+      content: Text("Would you like to delete this item?"),
+      actions: [
+        cancelButton,
+        deleteButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }

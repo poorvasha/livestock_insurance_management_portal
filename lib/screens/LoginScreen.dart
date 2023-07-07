@@ -85,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Container(
             height: 600,
@@ -109,11 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Row(children: [
-                    SvgPicture.asset(
-                      "../assets/images/secure_login.svg",
-                      height: 200,
-                      width: 200,
-                    ),
+                    Image.asset("../assets/images/dhan_logo.jpg", height: 300, width: 300,),
                     const SizedBox(
                       width: 80,
                     ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lsi_management_portal/screens/HomeScreen.dart';
+import 'package:lsi_management_portal/screens/LoginScreen.dart';
 import 'package:lsi_management_portal/screens/MasterDataEntryScreen.dart';
+import 'package:lsi_management_portal/services/SecureStorageService.dart';
 
 import '../configs/Resources.dart';
 import '../utils/Helpers.dart';
@@ -13,21 +15,25 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     void onPressed() {
       if (screenType == ScreenType.homeScreen) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const MasterDataEntryScreen()));
-        return;
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const MasterDataEntryScreen()));
       }
 
       if (screenType == ScreenType.masterDataEntryScreen) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+        Navigator.of(context).pop();
       }
     }
 
+    void onLogout() {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()));
+      SecureStorage().clear();
+      return;
+    }
+
     return Container(
-      decoration: BoxDecoration(boxShadow: Resources.customShadow, color: Resources.primaryColor),
+      decoration: BoxDecoration(
+          boxShadow: Resources.customShadow, color: Resources.primaryColor),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 70,
       child: Row(
@@ -68,7 +74,7 @@ class HeaderWidget extends StatelessWidget {
             width: 60,
           ),
           TextButton.icon(
-              onPressed: onPressed,
+              onPressed: onLogout,
               icon: const Icon(
                 Icons.logout,
                 size: 24,

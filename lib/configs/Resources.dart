@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Resources {
-  static const Color primaryColor = Color(0xFF0F9D58);
+  static const Color primaryColor = Colors.green;
   static const Color black = Color(0xFF000000);
   static const Color gray = Color.fromARGB(255, 82, 82, 82);
   static const Color white = Color(0xFfffffff);

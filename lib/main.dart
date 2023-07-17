@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lsi_management_portal/configs/Resources.dart';
+import 'package:lsi_management_portal/models/data/insurance_model.dart';
 import 'package:lsi_management_portal/screens/HomeScreen.dart';
+import 'package:lsi_management_portal/screens/InsuranceDetailScreen.dart';
 import 'package:lsi_management_portal/screens/LoginScreen.dart';
 import 'package:lsi_management_portal/screens/MasterDataEntryScreen.dart';
 import 'package:lsi_management_portal/services/app_helper.dart';
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Insurance App Admin',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.green,
           elevatedButtonTheme: const ElevatedButtonThemeData(
               style: ButtonStyle(
                   backgroundColor:

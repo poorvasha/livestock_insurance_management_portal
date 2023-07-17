@@ -89,3 +89,23 @@ class DialogHelper {
     );
   }
 }
+
+Future<void> showSelectableDialog(
+    BuildContext context, Function onTap, List<String> options) async {
+  await showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Text('Select Booking Type'),
+          children: options
+              .map((option) => SimpleDialogOption(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      onTap(option);
+                    },
+                    child: Text(option),
+                  ))
+              .toList(),
+        );
+      });
+}

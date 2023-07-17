@@ -27,7 +27,7 @@ class HeaderWidget extends StatelessWidget {
     }
 
     return Container(
-      decoration: BoxDecoration(boxShadow: Resources.customShadow),
+      decoration: BoxDecoration(boxShadow: Resources.customShadow, color: Resources.primaryColor),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 70,
       child: Row(
@@ -44,7 +44,7 @@ class HeaderWidget extends StatelessWidget {
             "Dhan Foundation Admin Portal",
             style: TextStyle(
                 fontSize: 18,
-                color: Resources.primaryColor,
+                color: Resources.white,
                 fontWeight: FontWeight.bold),
           ),
           const Spacer(),
@@ -55,13 +55,13 @@ class HeaderWidget extends StatelessWidget {
                   ? Icons.add_rounded
                   : Icons.keyboard_arrow_left,
               size: 24,
-              color: Resources.primaryColor,
+              color: Resources.white,
             ),
             label: Text(
                 screenType == ScreenType.homeScreen ? "New Data" : "Dashboard",
                 style: const TextStyle(
                     fontSize: 16,
-                    color: Resources.primaryColor,
+                    color: Resources.white,
                     fontWeight: FontWeight.bold)),
           ),
           const SizedBox(
@@ -72,12 +72,12 @@ class HeaderWidget extends StatelessWidget {
               icon: const Icon(
                 Icons.logout,
                 size: 24,
-                color: Resources.primaryColor,
+                color: Resources.white,
               ),
               label: const Text("Logout",
                   style: TextStyle(
                       fontSize: 16,
-                      color: Resources.primaryColor,
+                      color: Resources.white,
                       fontWeight: FontWeight.bold)))
         ],
       ),

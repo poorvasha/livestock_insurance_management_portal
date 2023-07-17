@@ -1,5 +1,5 @@
 class ApiRoutes {
-  static const String baseUrl = "http://localhost:3000";
+  static const String baseUrl = "http://ip44-85.inforiver.net:3001";
   static String userBase = "$baseUrl/users";
   static String moderatorLogin = "$userBase/moderator-login";
   static String statesBase = "$baseUrl/states";

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lsi_management_portal/configs/api_routes.dart';
 import 'package:lsi_management_portal/models/data/insurance_model.dart';
 import 'package:lsi_management_portal/widgets/DetailItemWidget.dart';
 
@@ -162,19 +163,19 @@ class _InsuranceDetailScreenState extends State<InsuranceDetailScreen> {
         const SizedBox(
           height: 22,
         ),
-        Image.network(insurance.image?.front ?? ""),
+        Image.network("${ApiRoutes.baseUrl}${insurance.image?.front}"),
         const SizedBox(
           height: 16,
         ),
-        Image.network(insurance.image?.back ?? ""),
+        Image.network("${ApiRoutes.baseUrl}${insurance.image?.back}"),
         const SizedBox(
           height: 16,
         ),
-        Image.network(insurance.image?.left ?? ""),
+        Image.network("${ApiRoutes.baseUrl}${insurance.image?.left}"),
         const SizedBox(
           height: 16,
         ),
-        Image.network(insurance.image?.right ?? ""),
+        Image.network("${ApiRoutes.baseUrl}${insurance.image?.right}"),
         const SizedBox(
           height: 16,
         )

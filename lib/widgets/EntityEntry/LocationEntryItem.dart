@@ -281,6 +281,7 @@ class _LocationEntryItemState extends State<LocationEntryItem> {
                   columns: const [
                     DataColumn(label: Text("Name")),
                     DataColumn(label: Text("Code")),
+                    DataColumn(label: Text("Password")),
                     DataColumn(label: Text("State")),
                     DataColumn(label: Text("Programme")),
                     DataColumn(label: Text("Region")),
@@ -294,6 +295,9 @@ class _LocationEntryItemState extends State<LocationEntryItem> {
                           ),
                           DataCell(
                             Text(value.code!),
+                          ),
+                          DataCell(
+                            Text(value.password!),
                           ),
                           DataCell(
                             Text(states

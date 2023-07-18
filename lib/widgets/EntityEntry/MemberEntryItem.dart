@@ -411,7 +411,6 @@ class _MemberEntryItemState extends State<MemberEntryItem> {
                 columns: const [
                   DataColumn(label: Text("Name")),
                   DataColumn(label: Text("Code")),
-                  DataColumn(label: Text("Password")),
                   DataColumn(label: Text("State")),
                   DataColumn(label: Text("Programme")),
                   DataColumn(label: Text("Region")),
@@ -428,9 +427,6 @@ class _MemberEntryItemState extends State<MemberEntryItem> {
                         ),
                         DataCell(
                           Text(value.code!),
-                        ),
-                        DataCell(
-                          Text(value.password!),
                         ),
                         DataCell(
                           Text(states

@@ -2,7 +2,6 @@ class Member {
   String? sId;
   String? name;
   String? code;
-  String? password;
   String? state;
   String? programme;
   String? region;
@@ -17,7 +16,6 @@ class Member {
       {this.sId,
       this.name,
       this.code,
-      this.password,
       this.state,
       this.programme,
       this.region,
@@ -32,7 +30,6 @@ class Member {
     sId = json['_id'];
     name = json['name'];
     code = json['code'];
-    password = json['password'];
     state = json['state'];
     programme = json['programme'];
     region = json['region'];
@@ -49,7 +46,6 @@ class Member {
     data['_id'] = this.sId;
     data['name'] = this.name;
     data['code'] = this.code;
-    data['password'] = this.password;
     data['state'] = this.state;
     data['programme'] = this.programme;
     data['region'] = this.region;

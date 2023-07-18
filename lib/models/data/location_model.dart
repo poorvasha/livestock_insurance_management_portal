@@ -3,6 +3,7 @@ class Location {
   String? name;
   String? code;
   String? state;
+  String? password;
   String? programme;
   String? region;
   String? createdAt;
@@ -13,6 +14,7 @@ class Location {
       {this.sId,
       this.name,
       this.code,
+      this.password,
       this.state,
       this.programme,
       this.region,
@@ -24,6 +26,7 @@ class Location {
     sId = json['_id'];
     name = json['name'];
     code = json['code'];
+    password = json['password'];
     state = json['state'];
     programme = json['programme'];
     region = json['region'];
@@ -37,6 +40,7 @@ class Location {
     data['_id'] = this.sId;
     data['name'] = this.name;
     data['code'] = this.code;
+    data['password'] = this.password;
     data['state'] = this.state;
     data['programme'] = this.programme;
     data['region'] = this.region;

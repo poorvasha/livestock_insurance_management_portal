@@ -199,7 +199,7 @@ class _MasterDataEntryScreenState extends State<MasterDataEntryScreen> {
                 const SizedBox(
                   width: 20,
                 ),
-                Expanded(child: DataEntryItem(entity: selectedEntity))
+                Expanded(child:  DataEntryItem(entity: selectedEntity))
               ],
             ),
           )

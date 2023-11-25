@@ -5,6 +5,7 @@ import 'package:lsi_management_portal/screens/InsuranceDetailScreen.dart';
 import 'package:lsi_management_portal/services/insurance_service.dart';
 import 'package:lsi_management_portal/utils/Helpers.dart';
 import 'package:lsi_management_portal/utils/excel_exporter.dart';
+import 'package:lsi_management_portal/utils/excel_importer.dart';
 
 import '../widgets/HeaderWidget.dart';
 
@@ -244,7 +245,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ExcelExporter.exportInsurances(insurances);
                       },
                       icon: Icon(Icons.import_export_rounded),
-                      label: Text("Export to Excel"))
+                      label: Text("Export")),
+                      SizedBox(width: 10,),
+                  ElevatedButton.icon(
+                      onPressed: () {
+                        ExcelImporter.importInsurance(context);
+                      },
+                      icon: Icon(Icons.import_export_rounded),
+                      label: Text("Import"))
                 ],
               ),
             ),

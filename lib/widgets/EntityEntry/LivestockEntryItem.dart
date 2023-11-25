@@ -161,6 +161,7 @@ class _LivestockEntryItemState extends State<LivestockEntryItem> {
                     (states) => Resources.primaryColor),
                 columnSpacing: 40,
                 columns: const [
+                  DataColumn(label: Text("Id")),
                   DataColumn(label: Text("Name")),
                   DataColumn(label: Text("Code")),
                   DataColumn(label: Text("Actions"))
@@ -168,6 +169,9 @@ class _LivestockEntryItemState extends State<LivestockEntryItem> {
                 rows: livestocks
                     .map(
                       (value) => DataRow(cells: [
+                         DataCell(
+                          SelectionArea(child: Text(value.sId!)),
+                        ),
                         DataCell(
                           Text(value.name!),
                         ),

@@ -320,6 +320,7 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
                     (states) => Resources.primaryColor),
                 columnSpacing: 40,
                 columns: const [
+                  DataColumn(label: Text("Id")),
                   DataColumn(label: Text("Name")),
                   DataColumn(label: Text("Code")),
                   DataColumn(label: Text("State")),
@@ -331,6 +332,9 @@ class _ClusterEntryItemState extends State<ClusterEntryItem> {
                 rows: clusters
                     .map(
                       (value) => DataRow(cells: [
+                        DataCell(
+                          SelectionArea(child: Text(value.sId!)),
+                        ),
                         DataCell(
                           Text(value.name!),
                         ),

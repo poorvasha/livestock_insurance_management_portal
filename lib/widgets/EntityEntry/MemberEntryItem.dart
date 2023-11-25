@@ -409,6 +409,7 @@ class _MemberEntryItemState extends State<MemberEntryItem> {
                     (states) => Resources.primaryColor),
                 columnSpacing: 40,
                 columns: const [
+                  DataColumn(label: Text("Id")),
                   DataColumn(label: Text("Name")),
                   DataColumn(label: Text("Code")),
                   DataColumn(label: Text("State")),
@@ -422,6 +423,9 @@ class _MemberEntryItemState extends State<MemberEntryItem> {
                 rows: members
                     .map(
                       (value) => DataRow(cells: [
+                        DataCell(
+                          SelectionArea(child: Text(value.sId!)),
+                        ),
                         DataCell(
                           Text(value.name!),
                         ),

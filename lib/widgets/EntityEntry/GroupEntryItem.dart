@@ -366,6 +366,7 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
                     (states) => Resources.primaryColor),
                 columnSpacing: 40,
                 columns: const [
+                  DataColumn(label: Text("Id")),
                   DataColumn(label: Text("Name")),
                   DataColumn(label: Text("Code")),
                   DataColumn(label: Text("State")),
@@ -378,6 +379,9 @@ class _GroupEntryItemState extends State<GroupEntryItem> {
                 rows: groups
                     .map(
                       (value) => DataRow(cells: [
+                        DataCell(
+                         SelectionArea(child: Text(value.sId!)),
+                        ),
                         DataCell(
                           Text(value.name!),
                         ),

@@ -12,7 +12,7 @@ class AuthService {
     var url = ApiRoutes.moderatorLogin;
     try {
       var payload = json.encode({'username': username, 'password': password});
-      var response = await HttpClient.post(url, payload);
+      var response = await HttpClient.post(url, payload, isAuthenticationRequired:false);
       return response;
     } on SocketException {
       throw FetchDataException('No Internet Connection', url.toString());

@@ -246,10 +246,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       icon: Icon(Icons.import_export_rounded),
                       label: Text("Export")),
-                      SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   ElevatedButton.icon(
-                      onPressed: () {
-                        ExcelImporter.importInsurance(context);
+                      onPressed: () async {
+                        bool isMasterDataInserted =
+                            await ExcelImporter.importInsurance(context);
+                        isMasterDataInserted;
+                        List<Insurance> _insurances =
+                            await InsuranceService.getInsurances();
+                        setState(() {
+                          insurances = _insurances;
+                          rawInsurances = _insurances;
+                        });
                       },
                       icon: Icon(Icons.import_export_rounded),
                       label: Text("Import"))

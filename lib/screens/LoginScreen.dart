@@ -90,9 +90,14 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
             height: 600,
             width: MediaQuery.of(context).size.width / 2,
-            decoration: BoxDecoration(
-                boxShadow: Resources.customShadow,
-                borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                  color: Resources.primaryColor.withOpacity(0.1),
+                  spreadRadius: 4,
+                  offset: const Offset(1, 1),
+                  blurRadius: 10,
+                  blurStyle: BlurStyle.outer)
+            ], borderRadius: BorderRadius.circular(10), color: Colors.white),
             padding: const EdgeInsets.all(60),
             child: Column(
               children: [
@@ -110,7 +115,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Row(children: [
-                    Image.asset("../assets/images/dhan_logo.jpg", height: 300, width: 300,),
+                    Image.asset(
+                      "../assets/images/dhan_logo.jpg",
+                      height: 300,
+                      width: 300,
+                    ),
                     const SizedBox(
                       width: 80,
                     ),

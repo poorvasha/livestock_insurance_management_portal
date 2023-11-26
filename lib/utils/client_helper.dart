@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -15,7 +16,8 @@ class ClientHelper {
     try {
       var header = {HttpHeaders.contentTypeHeader: "application/json"};
       if (authenticationRequired) {
-        var authToken = await SecureStorage().readSecureData('accessToken');
+        var authToken = await SessionManager().get("accessToken");
+        print(authToken);
         header["Authorization"] = "Bearer ${authToken.toString()}";
       }
       return header;

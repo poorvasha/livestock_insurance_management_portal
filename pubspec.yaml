@@ -42,6 +42,7 @@ dependencies:
   excel: ^2.1.0
   localstorage: ^4.0.1+4
   file_picker: ^6.0.0
+  flutter_session_manager: ^1.0.3
 
 dev_dependencies:
   flutter_test:

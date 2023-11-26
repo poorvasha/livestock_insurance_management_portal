@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
+import 'package:lsi_management_portal/providers/AppModel.dart';
 import 'package:lsi_management_portal/screens/HomeScreen.dart';
 import 'package:lsi_management_portal/screens/LoginScreen.dart';
 import 'package:lsi_management_portal/screens/MasterDataEntryScreen.dart';
 import 'package:lsi_management_portal/services/SecureStorageService.dart';
+import 'package:provider/provider.dart';
 
 import '../configs/Resources.dart';
 import '../utils/Helpers.dart';
@@ -25,8 +28,8 @@ class HeaderWidget extends StatelessWidget {
     }
 
     void onLogout() {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const LoginScreen()));
+      SessionManager().remove("accessToken");
+      context.read<AppModel>().setInitialRoute = "LoginScreen";
       SecureStorage().clear();
       return;
     }

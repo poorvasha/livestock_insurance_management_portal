@@ -12,8 +12,9 @@ class ExcelImporter {
   List<Insurance> rawInsurances = [];
   static BuildContext? context;
 
-  static Future<void> importInsurance(BuildContext buildContext) async {
+  static Future<bool> importInsurance(BuildContext buildContext) async {
     context = buildContext;
+    print(DateTime.now().toString());
     FilePickerResult? pickedFile = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['xlsx'],
@@ -32,7 +33,7 @@ class ExcelImporter {
       try {
         for (var sheet in excel.tables.keys) {
           if (excel.tables.isEmpty) {
-            return;
+            return false;
           }
 
           print(sheet);
@@ -49,11 +50,11 @@ class ExcelImporter {
               insurance.livestock = row[3]!.value.toString();
               insurance.variety = row[4]!.value.toString();
               insurance.cost = int.parse(row[5]!.value.toString());
-              insurance.premiumAmount = int.parse(row[5]!.value.toString());
-              insurance.sumAssured = int.parse(row[5]!.value.toString());
-              insurance.tagNumber = int.parse(row[5]!.value.toString());
+              insurance.premiumAmount = int.parse(row[6]!.value.toString());
+              insurance.sumAssured = int.parse(row[7]!.value.toString());
+              insurance.tagNumber = int.parse(row[8]!.value.toString());
               insurance.enrolledDate = row[9]!.value.toString();
-              insurance.coveringPeriod = int.parse(row[5]!.value.toString());
+              insurance.coveringPeriod = int.parse(row[10]!.value.toString());
               insurance.imageBack = "no image";
               insurance.imageFront = "no image";
               insurance.imageLeft = "no image";
@@ -81,10 +82,15 @@ class ExcelImporter {
                         child: Text("Okay"))
                   ],
                 ));
+        return false;
       }
       print(insurances);
 
       await InsuranceService.createInsurance(insurances);
+      return true;
+    }
+    else{
+      return false;
     }
   }
 }

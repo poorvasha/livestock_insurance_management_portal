@@ -27,8 +27,8 @@ class InsuranceService {
 
   static Future<dynamic> createInsurance(List<FilteredInsurance> insurances) async {
    var baseurl = ApiRoutes.insuranceBase;
-    //var url = "$baseurl/bulk";
-    var url = "http://127.0.0.1:3000/insurances/bulk";
+    var url = "$baseurl/bulk";
+    //var url = "http://127.0.0.1:3000/insurances/bulk";
     try {
       // var data = insurances.map(
       //   (e) => e.toJson(),

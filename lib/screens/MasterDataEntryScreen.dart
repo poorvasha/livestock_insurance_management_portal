@@ -39,7 +39,7 @@ class _MasterDataEntryScreenState extends State<MasterDataEntryScreen> {
                 SizedBox(
                   width: 200,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
                         height: 50,
@@ -117,63 +117,63 @@ class _MasterDataEntryScreenState extends State<MasterDataEntryScreen> {
                                       : Resources.primaryColor),
                             )),
                       ),
-                      SizedBox(
-                        height: 50,
-                        width: 200,
-                        child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  selectedEntity == "cluster"
-                                      ? Resources.primaryColor
-                                      : Resources.white),
-                            ),
-                            onPressed: () => onPressed("cluster"),
-                            child: Text(
-                              "Cluster",
-                              style: TextStyle(
-                                  color: selectedEntity == "cluster"
-                                      ? Resources.white
-                                      : Resources.primaryColor),
-                            )),
-                      ),
-                      SizedBox(
-                        height: 50,
-                        width: 200,
-                        child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  selectedEntity == "group"
-                                      ? Resources.primaryColor
-                                      : Resources.white),
-                            ),
-                            onPressed: () => onPressed("group"),
-                            child: Text(
-                              "Group",
-                              style: TextStyle(
-                                  color: selectedEntity == "group"
-                                      ? Resources.white
-                                      : Resources.primaryColor),
-                            )),
-                      ),
-                      SizedBox(
-                        height: 50,
-                        width: 200,
-                        child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  selectedEntity == "member"
-                                      ? Resources.primaryColor
-                                      : Resources.white),
-                            ),
-                            onPressed: () => onPressed("member"),
-                            child: Text(
-                              "Member",
-                              style: TextStyle(
-                                  color: selectedEntity == "member"
-                                      ? Resources.white
-                                      : Resources.primaryColor),
-                            )),
-                      ),
+                      // SizedBox(
+                      //   height: 50,
+                      //   width: 200,
+                      //   child: TextButton(
+                      //       style: ButtonStyle(
+                      //         backgroundColor: MaterialStateProperty.all(
+                      //             selectedEntity == "cluster"
+                      //                 ? Resources.primaryColor
+                      //                 : Resources.white),
+                      //       ),
+                      //       onPressed: () => onPressed("cluster"),
+                      //       child: Text(
+                      //         "Cluster",
+                      //         style: TextStyle(
+                      //             color: selectedEntity == "cluster"
+                      //                 ? Resources.white
+                      //                 : Resources.primaryColor),
+                      //       )),
+                      // ),
+                      // SizedBox(
+                      //   height: 50,
+                      //   width: 200,
+                      //   child: TextButton(
+                      //       style: ButtonStyle(
+                      //         backgroundColor: MaterialStateProperty.all(
+                      //             selectedEntity == "group"
+                      //                 ? Resources.primaryColor
+                      //                 : Resources.white),
+                      //       ),
+                      //       onPressed: () => onPressed("group"),
+                      //       child: Text(
+                      //         "Group",
+                      //         style: TextStyle(
+                      //             color: selectedEntity == "group"
+                      //                 ? Resources.white
+                      //                 : Resources.primaryColor),
+                      //       )),
+                      // ),
+                      // SizedBox(
+                      //   height: 50,
+                      //   width: 200,
+                      //   child: TextButton(
+                      //       style: ButtonStyle(
+                      //         backgroundColor: MaterialStateProperty.all(
+                      //             selectedEntity == "member"
+                      //                 ? Resources.primaryColor
+                      //                 : Resources.white),
+                      //       ),
+                      //       onPressed: () => onPressed("member"),
+                      //       child: Text(
+                      //         "Member",
+                      //         style: TextStyle(
+                      //             color: selectedEntity == "member"
+                      //                 ? Resources.white
+                      //                 : Resources.primaryColor),
+                      //       )),
+                      // ),
                       SizedBox(
                         height: 50,
                         width: 200,
